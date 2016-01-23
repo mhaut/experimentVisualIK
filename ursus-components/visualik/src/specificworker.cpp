@@ -488,6 +488,12 @@ bool SpecificWorker::correctPoseWithErrInv()
 
 	// Call BIK and wait for it to finish
 	printf("Mandamos %f %f %f\n", correctedTarget.getPose6D().x, correctedTarget.getPose6D().y, correctedTarget.getPose6D().z);
+        RoboCompInverseKinematics::Axis axis = RoboCompInverseKinematics::Axis();
+        axis.x = 0;
+        axis.y = 0;
+        axis.z = 1;
+        inversekinematics_proxy->setTargetAlignaxis(currentTarget.getBodyPart(), correctedTarget.getPose6D(), axis);
+        
 	int identifier = inversekinematics_proxy->setTargetPose6D(currentTarget.getBodyPart(), correctedTarget.getPose6D(), currentTarget.getWeights6D());
 	correctedTarget.setID_IK(identifier);
 
