@@ -382,6 +382,8 @@ bool SpecificWorker::correctPose()
 		abortCorrection = true;
 		currentTarget.setState(Target::State::NOT_RESOLVED);
 		innerModel->transform6D("target", "visual_hand").print("abort with visual error");
+                cout<<"Tnorm: "<<Tnorm;
+                cout<<"Rnorm: "<<Rnorm;
 		QMutexLocker ml(mutexSolved);
 		solvedList.enqueue(currentTarget);
                 // QUITAR DESPUES
@@ -417,6 +419,8 @@ bool SpecificWorker::correctPose()
 	{
 		currentTarget.setState(Target::State::RESOLVED);
 		innerModel->transform6D("target", "visual_hand").print("done with visual error");
+                cout<<"Tnorm: "<<Tnorm;
+                cout<<"Rnorm: "<<Rnorm;
 		QMutexLocker ml(mutexSolved);
 		solvedList.enqueue(currentTarget);
                 // QUITAR DESPUES:
