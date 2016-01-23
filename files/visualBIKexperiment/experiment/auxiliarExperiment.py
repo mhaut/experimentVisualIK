@@ -30,16 +30,34 @@ signal.signal(signal.SIGINT, signal.SIG_DFL)
 ic = None
 
 
+
+
+##configCJoint = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/ursusCommon.conf"
+##configAprilT = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/apriltags.conf"
+################################              OLD CONFIG
+###configIK     = "/home/robocomp/robocomp/components/robocomp-ursus-rockin/etc/ficheros_Test_VisualBIK/ikSim.conf"
+###configIKG    = "/home/robocomp/robocomp/components/robocomp-ursus-rockin/etc/ficheros_Test_VisualBIK/ikgSim.conf"
+###configVIK    = "/home/robocomp/robocomp/components/robocomp-ursus-rockin/etc/ficheros_Test_VisualBIK/vikSim.conf"
+
+##configIK     = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/inversekinematics.conf"
+##configIKG    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/ikg.conf"
+##configVIK    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/vikSim.conf"
+
+
+
+############CONFIG DEFINITIVOS VISUAL EXPERIMENT SIMULATION.
 configCJoint = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/ursusCommon.conf"
 configAprilT = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/apriltags.conf"
-##############################              OLD CONFIG
-#configIK     = "/home/robocomp/robocomp/components/robocomp-ursus-rockin/etc/ficheros_Test_VisualBIK/ikSim.conf"
-#configIKG    = "/home/robocomp/robocomp/components/robocomp-ursus-rockin/etc/ficheros_Test_VisualBIK/ikgSim.conf"
-#configVIK    = "/home/robocomp/robocomp/components/robocomp-ursus-rockin/etc/ficheros_Test_VisualBIK/vikSim.conf"
+configIK     = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/inversekinematics.conf"
+configIKG    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/ikg.conf"
+configVIK    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/vikSim.conf"
+#############################################################
 
-configIK     = "/home/robocomp/robocomp/components/robocomp-ursus/etc/inversekinematics.conf"
-configIKG    = "/home/robocomp/robocomp/components/robocomp-ursus/etc/ikg.conf"
-configVIK    = "/home/robocomp/robocomp/components/robocomp-ursus-rockin/etc/ficheros_Test_VisualBIK/vikSim.conf"
+
+
+
+
+
 
 numTargets = 3
 nohupIK      = True
@@ -252,7 +270,7 @@ class Auxiliar(QtGui.QDialog,Ice.Application):
 	
 		print 'ITERACION HECHA!'
 		#GUARDAMOS LOS DATOS EN OTRO FICHERO
-		os.system('mv /home/robocomp/robocomp/components/robocomp-ursus/components/visualik/data.txt /home/robocomp/robocomp/components/robocomp-ursus-rockin/files/visualBIKexperiment/output/datosObtenidos_'+str(self.i).zfill(5)+'.txt')
+		os.system('mv /home/robocomp/robocomp/components/robocomp-ursus/components/visualik/data.txt /home/mario/robocomp/components/experimentVisualIK/files/visualBIKexperiment/output/datosObtenidos_'+str(self.i).zfill(5)+'.txt')
 		# regeneramos
 		
 		self.stdDev_T += self.step_value_T
