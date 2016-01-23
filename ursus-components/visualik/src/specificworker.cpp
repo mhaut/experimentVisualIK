@@ -376,7 +376,9 @@ bool SpecificWorker::correctPose()
 	
 	printf("\n\n\ncall correctPose\n");
 
-
+        QVec vh = innerModel->transform6D("root", "visual_hand");
+        cout<<"VISUAL HAND "<<vh[0]<<" "<<vh[1]<<", "<<vh[2];
+        
 	if (currentTarget.getRunTime()>umbralMaxTime)
 	{
 		abortCorrection = true;
@@ -411,8 +413,6 @@ bool SpecificWorker::correctPose()
 	}
 
 	QVec visualError = innerModel->transform6D("target", "visual_hand");
-        QVec vh = innerModel->transform6D("root", "visual_hand");
-        cout<<"VISUAL HAND "<<vh[0]<<" "<<vh[1]<<", "<<vh[2];
         
 	printf("visualError         [ %f %f %f ]\n", visualError(0), visualError(1), visualError(2));
 	float Tnorm = QVec::vec3(visualError.x(),  visualError.y(),  visualError.z()).norm2();
