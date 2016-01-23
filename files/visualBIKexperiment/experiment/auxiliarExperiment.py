@@ -266,11 +266,11 @@ class Auxiliar(QtGui.QDialog,Ice.Application):
                                         print "ultima linea",last_line
                                         self.ui.textEdit.append(last_line+'\n')
                                         #TODO ALERT MERCEDES REVISAR
-                                        #step1 = last_line.split(":");
-                                        #step2 = step1[2].split(" ")
+                                        step1 = last_line.split(":");
+                                        step2 = step1[2].split(" ")
                                         
                                         #ANIADIDO POR MARIO
-                                        step2 = last_line.split(" ");
+                                        #step2 = last_line.split(" ");
                                         ############################
                                         
                                         error_vt = float(step2[0])
