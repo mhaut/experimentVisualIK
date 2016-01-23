@@ -385,19 +385,19 @@ void SpecificWorker::goHome(const string &bodyPart)
     MotorGoalPositionList listGoals;
 	listGoals.resize(7);
 	listGoals[0].name     = "rightShoulder1";
-	listGoals[0].position = -2.7;
+	listGoals[0].position = -0.1;
 	listGoals[1].name     = "rightShoulder2";
-	listGoals[1].position = -0.2;
+	listGoals[1].position = -0.1;
 	listGoals[2].name     = "rightShoulder3";
-	listGoals[2].position = 1.5;
+	listGoals[2].position = 0.1;
 	listGoals[3].name     = "rightElbow";
-	listGoals[3].position = 0.4;
+	listGoals[3].position = 0.15;
 	listGoals[4].name   = "rightForeArm";
-	listGoals[4].position = -1.;
+	listGoals[4].position = 0.1.;
 	listGoals[5].name = "rightWrist1";
-	listGoals[5].position = 0.;
+	listGoals[5].position = 0.0;
 	listGoals[6].name = "rightWrist2";
-	listGoals[6].position = 0.;
+	listGoals[6].position = 0.0;
 
 	for (int i=0; i<7; i++)
 	{
