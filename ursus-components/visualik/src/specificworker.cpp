@@ -492,7 +492,7 @@ bool SpecificWorker::correctPoseWithErrInv()
         axis.x = 0;
         axis.y = 0;
         axis.z = 1;
-        inversekinematics_proxy->setTargetAlignaxis(currentTarget.getBodyPart(), correctedTarget.getPose6D(), axis);
+        inversekinematics_proxy->setTargetAlignaxis("HEAD", correctedTarget.getPose6D(), axis);
         
 	int identifier = inversekinematics_proxy->setTargetPose6D(currentTarget.getBodyPart(), correctedTarget.getPose6D(), currentTarget.getWeights6D());
 	correctedTarget.setID_IK(identifier);
