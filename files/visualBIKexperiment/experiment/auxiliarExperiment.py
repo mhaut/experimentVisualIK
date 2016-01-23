@@ -30,8 +30,8 @@ signal.signal(signal.SIGINT, signal.SIG_DFL)
 ic = None
 
 
-configCJoint = "/home/robocomp/robocomp/components/robocomp-ursus-rockin/etc/ficheros_Test_VisualBIK/ursusCommon.conf"
-configAprilT = "/home/robocomp/robocomp/components/robocomp-ursus-rockin/etc/ficheros_Test_VisualBIK/apriltags.conf"
+configCJoint = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/ursusCommon.conf"
+configAprilT = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/apriltags.conf"
 ##############################              OLD CONFIG
 #configIK     = "/home/robocomp/robocomp/components/robocomp-ursus-rockin/etc/ficheros_Test_VisualBIK/ikSim.conf"
 #configIKG    = "/home/robocomp/robocomp/components/robocomp-ursus-rockin/etc/ficheros_Test_VisualBIK/ikgSim.conf"
