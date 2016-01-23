@@ -390,7 +390,7 @@ bool SpecificWorker::correctPose()
                 float Rnorm = QVec::vec3(visualError.rx(), visualError.ry(), visualError.rz()).norm2();
 //                 file<<Tnorm<<" "<<Rnorm<<"\n";
 //                 flush(file);
-                file<<"P: ("      <<target(0)<<', '<<target(1)<<', '<<target(2);
+                file<<"P: ("      <<target(0)<<", "<<target(1)<<", "<<target(2);
                 file<<")   ErrorVisual_T:"<<Tnorm;
                 file<<"   ErrorVisual_R:" <<Rnorm;
                 file<<"   ErrorDirecto_T:" <<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).errorT;
@@ -419,7 +419,7 @@ bool SpecificWorker::correctPose()
                 // QUITAR DESPUES:
 //                 file<<Tnorm<<" "<<Rnorm<<"\n";
 //                 flush(file);
-                file<<"P: ("      <<target(0)<<', '<<target(1)<<', '<<target(2);
+                file<<"P: ("      <<target(0)<<", "<<target(1)<<", "<<target(2);
                 file<<")   ErrorVisual_T:"<<Tnorm;
                 file<<"   ErrorVisual_R:" <<Rnorm;
                 file<<"   ErrorDirecto_T:" <<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).errorT;
