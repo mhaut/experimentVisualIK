@@ -26,9 +26,9 @@ SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 	INITIALIZE_READY    = false;
 	UPDATE_READY        = true; 
 	mutexSolved         = new QMutex(QMutex::Recursive);
-// 	file.open("/home/robocomp/robocomp/components/robocomp-ursus/components/inversekinematics/data.txt", ios::out | ios::app);
-// 	if (file.is_open()==false)
-// 		qFatal("ARCHIVO NO ABIERTO");
+	file.open("/home/robocomp/robocomp/components/robocomp-ursus/components/inversekinematics/data.txt", ios::out | ios::app);
+	if (file.is_open()==false)
+		qFatal("ARCHIVO NO ABIERTO");
 
 	innermodel          = NULL;
 #ifdef USE_QTGUI
@@ -44,7 +44,7 @@ SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 */
 SpecificWorker::~SpecificWorker()
 {
-	//file.close();
+	file.close();
 }
 /**
  * \brief This method reads the configuration file's params. If the config file doesn't
@@ -565,11 +565,11 @@ void SpecificWorker::showInformation(BodyPart part, Target target)
 	qDebug()<<"Vector error:   "<<target.getTargetError(errorT, errorR)<<"\\";
 	qDebug()<<"(T: "<<abs(errorT)*1000<<"mm , R: "<<abs(errorR)<<"rad)";
 
-// 	file<<"P: ("      <<target.getTargetPose();
-// 	file<<")    ERROR_T:"<<abs(errorT)*1000;
-// 	file<<"     ERROR_R:" <<abs(errorR);
-// 	file<<"     END: "<<finalState.toStdString()<<endl;
-// 	flush(file);
+	file<<"P: ("      <<target.getTargetPose();
+	file<<")    ERROR_T:"<<abs(errorT)*1000;
+	file<<"     ERROR_R:" <<abs(errorR);
+	file<<"     END: "<<finalState.toStdString()<<endl;
+	flush(file);
 }
 /**
  * \brief This method stores the target solved into a structure
