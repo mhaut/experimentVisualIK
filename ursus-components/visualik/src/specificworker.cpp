@@ -386,8 +386,8 @@ bool SpecificWorker::correctPose()
                 QVec visualError = innerModel->transform6D("target", "visual_hand");
                 float Tnorm = QVec::vec3(visualError.x(),  visualError.y(),  visualError.z()).norm2();
                 float Rnorm = QVec::vec3(visualError.rx(), visualError.ry(), visualError.rz()).norm2();
-                cout<<"Tnorm: "<<Tnorm;
-                cout<<"Rnorm: "<<Rnorm;
+                qDebug()<<"Tnorm: "<<Tnorm;
+                qDebug()<<"Rnorm: "<<Rnorm;
                 //
 		QMutexLocker ml(mutexSolved);
 		solvedList.enqueue(currentTarget);
@@ -419,10 +419,10 @@ bool SpecificWorker::correctPose()
 	float Rnorm = QVec::vec3(visualError.rx(), visualError.ry(), visualError.rz()).norm2();
 	if (Tnorm<umbralErrorT and Rnorm<umbralErrorR)
 	{
+                qDebug()<<"Tnorm: "<<Tnorm;
+                qDebug()<<"Rnorm: "<<Rnorm;            
 		currentTarget.setState(Target::State::RESOLVED);
 		innerModel->transform6D("target", "visual_hand").print("done with visual error");
-                cout<<"Tnorm: "<<Tnorm;
-                cout<<"Rnorm: "<<Rnorm;
 		QMutexLocker ml(mutexSolved);
 		solvedList.enqueue(currentTarget);
                 // QUITAR DESPUES:
