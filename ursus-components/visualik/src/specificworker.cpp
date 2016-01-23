@@ -359,7 +359,7 @@ void SpecificWorker::applyFirstApproximation()
 
 bool SpecificWorker::correctPose()
 {
-	const float umbralMaxTime=15;
+	const float umbralMaxTime=35;
 	const float umbralErrorT=25.0, umbralErrorR=0.18;
 
 	printf("seconds without tag: %f\n", rightHand->getSecondsElapsed());
