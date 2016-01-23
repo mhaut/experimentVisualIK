@@ -402,7 +402,7 @@ bool SpecificWorker::correctPose()
                 file<<"   ErrorDirecto_T:" <<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).errorT;
                 file<<"   ErrorDirecto_R: "<<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).errorR;
                 file<<"   END: "    <<currentTarget.getRunTime();
-                file<<"   WHY?: "<<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).state;
+                file<<"   WHY?: "<<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).state<<"\n";
 //                 if(timeSinMarca > (60/4))
 //                         file<<"   CAMARA PERDIDA: "<<1<<" - "<<timeSinMarca<<endl;
 //                 else
@@ -434,7 +434,7 @@ bool SpecificWorker::correctPose()
                 file<<"   ErrorDirecto_T:" <<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).errorT;
                 file<<"   ErrorDirecto_R: "<<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).errorR;
                 file<<"   END: "    <<currentTarget.getRunTime();
-                file<<"   WHY?: "<<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).state;
+                file<<"   WHY?: "<<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).state<<"\n";
 //                 if(timeSinMarca > (60/4))
 //                         file<<"   CAMARA PERDIDA: "<<1<<" - "<<timeSinMarca<<endl;
 //                 else
