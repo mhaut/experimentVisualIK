@@ -46,6 +46,7 @@ void VisualHand::setVisualPose(RoboCompAprilTags::tag tag)
 
 	// Obtain the visual pose of the hand from the root reference frame and update innermodel accordingly
 	visualPose = im->transform6D("root", SH2);
+        visualPose[1] = visualPose.y() + 110;
 	im->updateTransformValues("visual_hand", visualPose.x(), visualPose.y(), visualPose.z(), visualPose.rx(), visualPose.ry(), visualPose.rz());
 
 	gettimeofday(lastUpdate, NULL);

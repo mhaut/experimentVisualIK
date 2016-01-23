@@ -386,7 +386,7 @@ bool SpecificWorker::correctPose()
 		innerModel->transform6D("target", "visual_hand").print("abort with visual error");
                  // QUITAR DESPUES
                 QVec visualError = innerModel->transform6D("target", "visual_hand");
-                float Tnorm = QVec::vec3(visualError.x(),  visualError.y() - 110,  visualError.z()).norm2();
+                float Tnorm = QVec::vec3(visualError.x(),  visualError.y(),  visualError.z()).norm2();
                 float Rnorm = QVec::vec3(visualError.rx(), visualError.ry(), visualError.rz()).norm2();
                 qDebug()<<"Tnorm: "<<Tnorm;
                 qDebug()<<"Rnorm: "<<Rnorm;
@@ -415,7 +415,7 @@ bool SpecificWorker::correctPose()
 	QVec visualError = innerModel->transform6D("target", "visual_hand");
         
 	printf("visualError         [ %f %f %f ]\n", visualError(0), visualError(1), visualError(2));
-	float Tnorm = QVec::vec3(visualError.x(),  visualError.y() - 100,  visualError.z()).norm2();
+	float Tnorm = QVec::vec3(visualError.x(),  visualError.y(),  visualError.z()).norm2();
 	float Rnorm = QVec::vec3(visualError.rx(), visualError.ry(), visualError.rz()).norm2();
 	if (Tnorm<umbralErrorT and Rnorm<umbralErrorR)
 	{
