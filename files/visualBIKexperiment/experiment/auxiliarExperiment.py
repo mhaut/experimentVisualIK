@@ -62,11 +62,18 @@ ic = None
 ###############################################################
 
 ############CONFIG DEFINITIVOS VISUAL EXPERIMENT SIMULATION.
-configCJoint = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/ursusCommon.conf"
-configAprilT = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/apriltags.conf"
-configIK     = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/inversekinematics.conf"
-configIKG    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/ikg.conf"
-configVIK    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/vik.conf"
+#configCJoint = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/ursusCommon.conf"
+#configAprilT = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/apriltags.conf"
+#configIK     = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/inversekinematics.conf"
+#configIKG    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/ikg.conf"
+#configVIK    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/vik.conf"
+#############################################################
+############CONFIG DEFINITIVOS VISUAL EXPERIMENT SIMULATION.
+configCJoint = "/home/robocomp/robocomp/components/robocomp-ursus/etc/ursusCommon.conf"
+configAprilT = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/apriltags.conf" #"/home/robocomp/robocomp/components/robocomp-ursus/etc/apriltags.conf"
+configIK     = "/home/robocomp/robocomp/components/robocomp-ursus/etc/inversekinematics.conf"
+configIKG    = "/home/robocomp/robocomp/components/robocomp-ursus/etc/ikg.conf"
+configVIK    = "/home/robocomp/robocomp/components/robocomp-ursus/etc/vik.conf"
 #############################################################
 
 
@@ -74,8 +81,7 @@ configVIK    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/config
 
 
 
-
-numTargets = 3
+numTargets = 10
 nohupIK      = True
 nohupGIK      = True
 nohupVIK      = True
@@ -92,8 +98,8 @@ class Auxiliar(QtGui.QDialog,Ice.Application):
 		ic = Ice.initialize(params)
 	  	print "---->",type(ic)
 	  	
-		self.inversekinematics_proxy = None
-		
+		self.inversekinematics_proxy_0 = None
+		self.inversekinematics_proxy_1 = None
 		self.ui = Ui_guiDlg()
 		self.ui.setupUi(self)
 		self.show()
@@ -136,50 +142,29 @@ class Auxiliar(QtGui.QDialog,Ice.Application):
 		self.targets = []
 		while len(self.targets)<numTargets:
 			pose6D    = Pose6D()
-			pose6D.x  = random.randint(140, 300)
-			pose6D.y  = random.randint(780, 800)
-			pose6D.z  = random.randint(300, 390)
+			pose6D.x  = random.randint(240, 300)
+			pose6D.y  = random.randint(1000, 1250)
+			pose6D.z  = random.randint(380, 470)
 			pose6D.rx = 0
 			pose6D.ry = -0.80
-			pose6D.rz = -3.1416
+			pose6D.rz = 0 #-3.1416
 			if (pose6D in self.targets) == False:
 				self.targets.append(pose6D)
 				
 		#Eliminamos los ficheros que puedan contener basura:
-		#os.system("rm /home/robocomp/robocomp/components/robocomp-ursus/components/inversekinematics/data.txt")
 		os.system("rm /home/robocomp/robocomp/components/robocomp-ursus/components/visualik/data.txt")
-		#os.system("echo "" > /home/robocomp/robocomp/components/robocomp-ursus/components/visualik/data.txt")
-		
-		#Variables del bucle:
-		self.init_value_T = 0.0
-		self.init_value_R = 0.0
-		self.end_value_T  = 50.00
-		self.end_value_R  = (15.0*math.pi)/180.0#0.0
-		self.step_value_T = 5
-		self.step_value_R = self.end_value_R/10.0
-		self.i = 1 #change to 1
 
-		self.stdDev_T  = self.init_value_T
-		self.stdDev_R  = self.init_value_R
-		self.testTimer = QtCore.QTimer()
-		self.testTimer.timeout.connect(self.doTest)
-		self.testTimer.start(1)
-		
+		self.i=1
+		self.doTest()
+	
+
 	#### TODO QUITAR COMENTARIOS	
 	def doTest(self):
-		if self.stdDev_R >= self.end_value_R or self.stdDev_T >= self.end_value_T:
-			self.testTimer.stop()
-			os.system("rm /home/robocomp/robocomp/components/robocomp-ursus/components/inversekinematics/data.txt")
-			#os.system('killall -9 VisualBIK inversekinematics ursuscommonjointcomp apriltagscomp')
-			os.system('killall -9 VisualBIK ikGraphGenerator inversekinematics ursuscommonjointcomp apriltagscomp')
-			self.ui.testButton.setEnabled(True)
-			
-		self.ui.errorLabel.setText('Running experiment with error in translation: stdDev_T='+str(self.stdDev_T)+' and error in rotation: stdDev_R='+str(self.stdDev_R))
-		print "Error: ER:", self.stdDev_R, " and ET:", self.stdDev_T
-		
+		################################################
+		############################ VIK
+		os.system("rm /home/robocomp/robocomp/components/robocomp-ursus/components/visualik/data.txt")
 		os.system('killall -9 VisualBIK ikGraphGenerator inversekinematics ursuscommonjointcomp apriltagscomp')
-		self.generateErrorsXML("/home/robocomp/robocomp/components/robocomp-ursus-rockin/files/visualBIKexperiment/ursus.xml", "/home/robocomp/robocomp/components/robocomp-ursus-rockin/files/visualBIKexperiment/ursus_errors.xml", self.stdDev_T, self.stdDev_R, 0)
-		
+
 		##LEVANTAMOS EL URSUS COMMON JOINT
 		self.ui.textEdit_2.append(str(self.i)+'---> ejecutando ursus common joint\n')
 		print '############################# ejecutando ursus common joint'
@@ -201,7 +186,6 @@ class Auxiliar(QtGui.QDialog,Ice.Application):
 		if nohupIK is True:
                     command = 'nohup '+command+' 2> ikDATA.txt'
 		os.system(command+' &')
-		#os.system('nohup /home/robocomp/robocomp/components/robocomp-ursus/components/inversekinematics/bin/inversekinematics --Ice.Config='+configIK+' > /dev/null &')
 		#DORMIMOS 5 SEGUNDOS
 		time.sleep(10)
 		
@@ -213,7 +197,6 @@ class Auxiliar(QtGui.QDialog,Ice.Application):
 		if nohupGIK is True:
                     command = 'nohup '+command+' 2> graphDATA.txt'
 		os.system(command+' &')
-		#os.system('nohup /home/robocomp/robocomp/components/robocomp-ursus/components/ikGraphGenerator/bin/ikGraphGenerator --Ice.Config='+configIKG+' 2> graphDATA.txt &')
 		#DORMIMOS 5 SEGUNDOS
 		time.sleep(10)		
 		
@@ -225,32 +208,34 @@ class Auxiliar(QtGui.QDialog,Ice.Application):
 		if nohupVIK is True:
                     command = 'nohup '+command+' 2> visualDATA.txt'
 		os.system(command+' &')
-		#os.system('nohup /home/robocomp/robocomp/components/robocomp-ursus/components/visualik/bin/VisualBIK --Ice.Config='+configVIK+' 2> visualDATA.txt &')
 		#DORMIMOS 5 SEGUNDOS
 		time.sleep(10)
 		
 		#### CREAR EL PROXY AL INVERSEKINEMATICS
-		self.initializeProxy()
+		self.initializeProxy_0()
 		##ENVIAMOS LOS TARGETS:
 		j=0
-		#os.system("echo "" > /home/robocomp/robocomp/components/robocomp-ursus/components/visualik/data.txt")
 		for pose in self.targets:
-			self.ui.poseLabel.setText("Pose Actual: ["+str(pose.x)+", "+str(pose.y)+", "+str(pose.z)+", "+str(pose.rx)+", "+str(pose.ry)+", "+str(pose.rz)+"]")
-			print "Iteracion ("+str(j)+")", "Pose Actual: ["+str(pose.x)+", "+str(pose.y)+", "+str(pose.z)+", "+str(pose.rx)+", "+str(pose.ry)+", "+str(pose.rz)+"]"
+			#mandamos al home
+			try:
+				self.inversekinematics_proxy_0.goHome("RIGHTARM")
+				time.sleep(7)
+			except:
+				print "fallo al enviar al home"
+			print "\n\nIteracion ("+str(j)+")", "Pose Actual: ["+str(pose.x)+", "+str(pose.y)+", "+str(pose.z)+", "+str(pose.rx)+", "+str(pose.ry)+", "+str(pose.rz)+"]"
 			try:
 				#Primero a la CABEZA para que mire:
 				part = "HEAD"
-				self.inversekinematics_proxy.setTargetAlignaxis(part, pose, self.axis)
+				self.inversekinematics_proxy_0.setTargetAlignaxis(part, pose, self.axis)
 				
 				part = "RIGHTARM"
-				identificador = self.inversekinematics_proxy.setTargetPose6D(part,pose, self.weights)
+				identificador = self.inversekinematics_proxy_0.setTargetPose6D(part,pose, self.weights)
 				
 				state = TargetState()
-				state = self.inversekinematics_proxy.getTargetState("RIGHTARM", identificador)
+				state = self.inversekinematics_proxy_0.getTargetState("RIGHTARM", identificador)
 				while state.finish!=True:
-					state = self.inversekinematics_proxy.getTargetState("RIGHTARM", identificador)
+					state = self.inversekinematics_proxy_0.getTargetState("RIGHTARM", identificador)
 
-					
 				#Ya hemos terminado: escribimos el dato
 				try:
                                     infile = open ("/home/robocomp/robocomp/components/robocomp-ursus/components/visualik/data.txt" ,"r" )
@@ -286,39 +271,154 @@ class Auxiliar(QtGui.QDialog,Ice.Application):
 	
 		print 'ITERACION HECHA!'
 		#GUARDAMOS LOS DATOS EN OTRO FICHERO
-		os.system('mv /home/robocomp/robocomp/components/robocomp-ursus/components/visualik/data.txt /home/mario/robocomp/components/experimentVisualIK/files/visualBIKexperiment/output/datosObtenidos_'+str(self.i).zfill(5)+'.txt')
-		# regeneramos
-		
-		self.stdDev_T += self.step_value_T
-		if self.stdDev_T>=self.end_value_T :
-			print "SIGUIENTE ITERACION "
-			self.stdDev_R += self.step_value_R
-			self.stdDev_T = self.init_value_T
+		os.system('mv /home/robocomp/robocomp/components/robocomp-ursus/components/visualik/data.txt /home/robocomp/robocomp/components/experimentVisualIK/files/visualBIKexperiment/output/datosObtenidos_VIK'+str(self.i).zfill(5)+'.txt')
 
-		self.i += 1
+		##############################################################################################
+		##############################################################################################
+		##############################################################################################
+		##############################################################################################
+		os.system("rm /home/robocomp/robocomp/components/robocomp-ursus/components/inversekinematics/data.txt")
+		os.system('killall -9 VisualBIK ikGraphGenerator inversekinematics ursuscommonjointcomp apriltagscomp')
+
+		
+		##LEVANTAMOS EL URSUS COMMON JOINT
+		self.ui.textEdit_2.append(str(self.i)+'---> ejecutando ursus common joint\n')
+		print '############################# ejecutando ursus common joint'
+		os.system('killall -9 ursuscommonjointcomp')
+		os.system('nohup /home/robocomp/robocomp/components/robocomp-ursus/components/ursusCommonJoint/bin/ursuscommonjointcomp --Ice.Config='+configCJoint+' > /dev/null &')
+		time.sleep(5)
+		
+		##LEVANTAMOS EL INVERSEKINEMATICS
+		self.ui.textEdit_2.append(str(self.i)+'--->  ejecutando IK\n')
+		print '############################# ejecutando IK'
+		os.system('killall -9 inversekinematics')
+		command = '/home/robocomp/robocomp/components/robocomp-ursus/components/inversekinematics/bin/inversekinematics --Ice.Config='+configIK
+		if nohupIK is True:
+                    command = 'nohup '+command+' 2> ikDATA.txt'
+		os.system(command+' &')
+		#DORMIMOS 5 SEGUNDOS
+		time.sleep(10)
+
+		##LEVANTAMOS EL INVERSEKINEMATICSGRAPH
+		self.ui.textEdit_2.append(str(self.i)+'--->  ejecutando GIK\n')
+		print '############################# ejecutando GIK'
+		os.system('killall -9 ikGraphGenerator')
+		command = '/home/robocomp/robocomp/components/robocomp-ursus/components/ikGraphGenerator/bin/ikGraphGenerator --Ice.Config='+configIKG
+		if nohupGIK is True:
+                    command = 'nohup '+command+' 2> graphDATA.txt'
+		os.system(command+' &')
+		#DORMIMOS 5 SEGUNDOS
+		time.sleep(10)	
+
+		#######
+		self.initializeProxy_1()
+		##ENVIAMOS LOS TARGETS:
+		j=0
+		for pose in self.targets:
+			#mandamos al home
+			try:
+				self.inversekinematics_proxy_1.goHome("RIGHTARM")
+				time.sleep(7)
+			except:
+				print "fallo al enviar al home"
+			print "\n\nIteracion ("+str(j)+")", "Pose Actual: ["+str(pose.x)+", "+str(pose.y)+", "+str(pose.z)+", "+str(pose.rx)+", "+str(pose.ry)+", "+str(pose.rz)+"]"
+			try:
+				#Primero a la CABEZA para que mire:
+				part = "HEAD"
+				self.inversekinematics_proxy_1.setTargetAlignaxis(part, pose, self.axis)
+				
+				part = "RIGHTARM"
+				identificador = self.inversekinematics_proxy_1.setTargetPose6D(part,pose, self.weights)
+			
+				state = TargetState()
+				state = self.inversekinematics_proxy_1.getTargetState("RIGHTARM", identificador)
+				while state.finish!=True:
+					state = self.inversekinematics_proxy_1.getTargetState("RIGHTARM", identificador)
+
+				#Ya hemos terminado: escribimos el dato
+				try:
+                                    infile = open ("/home/robocomp/robocomp/components/robocomp-ursus/components/ikGraphGenerator/data.txt" ,"r" )
+                                    lines = infile.readlines () 
+                                    if len(lines)<=0:
+                                            print "FICHERO VACIO"
+                                            sys.exit(-1)
+
+                                    infile.close ()
+                                    last_line = lines [ len ( lines ) -1 ]
+                                    #print last_line
+                                    if "\n" != last_line:
+                                        print "ultima linea",last_line
+                                        self.ui.textEdit.append(last_line+'\n')
+                                        #TODO ALERT MERCEDES REVISAR
+                                        step1 = last_line.split(":");
+                                        step2 = step1[2].split(" ")
+                                        
+                                        #ANIADIDO POR MARIO
+                                        #step2 = last_line.split(" ");
+                                        ############################
+                                        
+                                        error_vt = float(step2[0])
+                                        print "Error visual alcanzado: ", error_vt 
+                                except IOError as e:
+                                    print e
+                                    sys.exit(-1)
+			except:
+				print "EXCEPCION EN SEND POSE 6D"
+				traceback.print_exc()
+                        j += 1
+
+	
+		#print 'ITERACION HECHA!'
+		#GUARDAMOS LOS DATOS EN OTRO FICHERO
+		os.system('mv /home/robocomp/robocomp/components/robocomp-ursus/components/inversekinematics/data.txt /home/robocomp/robocomp/components/experimentVisualIK/files/visualBIKexperiment/output/datosObtenidos_IK'+str(self.i).zfill(5)+'.txt')
+		
 				
 	#######################################################
 	### METODOS PRIVADOS DE LA CLASE
 	#######################################################
 	#### Inicializa el proxy al visualIK.
-	def initializeProxy(self):
-		print "PROXY"
+	def initializeProxy_0(self):
+		print "PROXY_VIK"
 		import RoboCompInverseKinematics
 		status = 0
 		try:
 			# Remote object connection for InverseKinematics
 			try:
-				proxyString = ic.getProperties().getProperty('InverseKinematicsProxy')
-				print "Proxy IK ----------------------->" + proxyString
+				proxyString = ic.getProperties().getProperty('InverseKinematicsProxy_0')
+				print "Proxy VIK ----------------------->" + proxyString
 				try:
 					basePrx = ic.stringToProxy(proxyString)
-					self.inversekinematics_proxy = RoboCompInverseKinematics.InverseKinematicsPrx.checkedCast(basePrx)
+					self.inversekinematics_proxy_0 = RoboCompInverseKinematics.InverseKinematicsPrx.checkedCast(basePrx)
 				except Ice.Exception:
 					print 'Cannot connect to the remote object (InverseKinematics)', proxyString
 					status = 1
 			except Ice.Exception, e:
 				print e
-				print 'Cannot get InverseKinematicsProxy property.'
+				print 'Cannot get InverseKinematicsProxy_0 property.'
+				status = 1
+		except:
+			traceback.print_exc()
+			status = 1
+
+	#### Inicializa el proxy al IK.
+	def initializeProxy_1(self):
+		print "PROXY_IK"
+		import RoboCompInverseKinematics
+		status = 0
+		try:
+			# Remote object connection for InverseKinematics
+			try:
+				proxyString = ic.getProperties().getProperty('InverseKinematicsProxy_1')
+				print "Proxy IK ----------------------->" + proxyString
+				try:
+					basePrx = ic.stringToProxy(proxyString)
+					self.inversekinematics_proxy_1 = RoboCompInverseKinematics.InverseKinematicsPrx.checkedCast(basePrx)
+				except Ice.Exception:
+					print 'Cannot connect to the remote object (InverseKinematics)', proxyString
+					status = 1
+			except Ice.Exception, e:
+				print e
+				print 'Cannot get InverseKinematicsProxy_1 property.'
 				status = 1
 		except:
 			traceback.print_exc()
