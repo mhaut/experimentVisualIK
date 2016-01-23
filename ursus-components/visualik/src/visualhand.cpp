@@ -35,9 +35,6 @@ VisualHand::~VisualHand()
 
 void VisualHand::setVisualPose(RoboCompAprilTags::tag tag)
 {
-        // correct error model luego quitar
-        tag.ty = tag.ty + 110;
-        //
 	// tagPose as seen by apriltagscomp (rotation zero faces the camera)
 	tagPose = QVec::vec6(tag.tx, tag.ty, tag.tz, tag.rx, tag.ry, tag.rz);
 
