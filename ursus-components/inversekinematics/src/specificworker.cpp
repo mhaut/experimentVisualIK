@@ -393,7 +393,7 @@ void SpecificWorker::goHome(const string &bodyPart)
 	listGoals[3].name     = "rightElbow";
 	listGoals[3].position = 0.15;
 	listGoals[4].name   = "rightForeArm";
-	listGoals[4].position = 0.1.;
+	listGoals[4].position = 0.1;
 	listGoals[5].name = "rightWrist1";
 	listGoals[5].position = 0.0;
 	listGoals[6].name = "rightWrist2";
