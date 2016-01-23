@@ -382,14 +382,16 @@ bool SpecificWorker::correctPose()
 		abortCorrection = true;
 		currentTarget.setState(Target::State::NOT_RESOLVED);
 		innerModel->transform6D("target", "visual_hand").print("abort with visual error");
-                cout<<"Tnorm: "<<Tnorm;
-                cout<<"Rnorm: "<<Rnorm;
-		QMutexLocker ml(mutexSolved);
-		solvedList.enqueue(currentTarget);
-                // QUITAR DESPUES
+                 // QUITAR DESPUES
                 QVec visualError = innerModel->transform6D("target", "visual_hand");
                 float Tnorm = QVec::vec3(visualError.x(),  visualError.y(),  visualError.z()).norm2();
                 float Rnorm = QVec::vec3(visualError.rx(), visualError.ry(), visualError.rz()).norm2();
+                cout<<"Tnorm: "<<Tnorm;
+                cout<<"Rnorm: "<<Rnorm;
+                //
+		QMutexLocker ml(mutexSolved);
+		solvedList.enqueue(currentTarget);
+               
 //                 file<<Tnorm<<" "<<Rnorm<<"\n";
 //                 flush(file);
                 file<<"P: ("      <<target(0)<<", "<<target(1)<<", "<<target(2);
