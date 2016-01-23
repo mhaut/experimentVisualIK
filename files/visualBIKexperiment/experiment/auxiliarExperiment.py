@@ -45,12 +45,28 @@ ic = None
 
 
 
+###############CONFIG DEFINITIVOS VISUAL EXPERIMENT SIMULATION.
+###configCJoint = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/ursusCommon.conf"
+###configAprilT = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/apriltags.conf"
+###configIK     = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/inversekinematics.conf"
+###configIKG    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/ikg.conf"
+###configVIK    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/vik.conf"
+################################################################
+
+##############CONFIG DEFINITIVOS VISUAL EXPERIMENT REMOTE. NOT WORK. The process in the script are in local. I recommended use rcremote
+##configCJoint = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefReal/ursusCommon.conf"
+##configAprilT = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefReal/apriltags.conf"
+##configIK     = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefReal/inversekinematics.conf"
+##configIKG    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefReal/ikg.conf"
+##configVIK    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefReal/vik.conf"
+###############################################################
+
 ############CONFIG DEFINITIVOS VISUAL EXPERIMENT SIMULATION.
 configCJoint = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/ursusCommon.conf"
 configAprilT = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/apriltags.conf"
 configIK     = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/inversekinematics.conf"
 configIKG    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/ikg.conf"
-configVIK    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/vikSim.conf"
+configVIK    = "/home/robocomp/robocomp/components/experimentVisualIK/etc/configDefSim/vik.conf"
 #############################################################
 
 
