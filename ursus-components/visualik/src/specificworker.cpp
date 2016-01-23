@@ -388,9 +388,20 @@ bool SpecificWorker::correctPose()
                 QVec visualError = innerModel->transform6D("target", "visual_hand");
                 float Tnorm = QVec::vec3(visualError.x(),  visualError.y(),  visualError.z()).norm2();
                 float Rnorm = QVec::vec3(visualError.rx(), visualError.ry(), visualError.rz()).norm2();
-//                 file.open("/home/robocomp/robocomp/components/robocomp-ursus/components/visualik/data.txt", ios::out | ios::app);
-                file<<Tnorm<<" "<<Rnorm<<"\n";
-                flush(file);
+//                 file<<Tnorm<<" "<<Rnorm<<"\n";
+//                 flush(file);
+                file<<"P: ("      <<target(0)<<', '<<target(1)<<', '<<target(2);
+                file<<")   ErrorVisual_T:"<<Tnorm;
+                file<<"   ErrorVisual_R:" <<Rnorm;
+                file<<"   ErrorDirecto_T:" <<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).errorT;
+                file<<"   ErrorDirecto_R: "<<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).errorR;
+                file<<"   END: "    <<currentTarget.getRunTime();
+                file<<"   WHY?: "<<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).state;
+//                 if(timeSinMarca > (60/4))
+//                         file<<"   CAMARA PERDIDA: "<<1<<" - "<<timeSinMarca<<endl;
+//                 else
+//                         file<<"   CAMARA PERDIDA: "<<0<<" - "<<timeSinMarca<<endl;
+                flush(file);	                
                 //_------------
 		return false;
 	}
@@ -406,10 +417,21 @@ bool SpecificWorker::correctPose()
 		QMutexLocker ml(mutexSolved);
 		solvedList.enqueue(currentTarget);
                 // QUITAR DESPUES:
-//                 file.open("/home/robocomp/robocomp/components/robocomp-ursus/components/visualik/data.txt", ios::out | ios::app);
-                file<<Tnorm<<" "<<Rnorm<<"\n";
-                flush(file);
-//                 file.close()
+//                 file<<Tnorm<<" "<<Rnorm<<"\n";
+//                 flush(file);
+                file<<"P: ("      <<target(0)<<', '<<target(1)<<', '<<target(2);
+                file<<")   ErrorVisual_T:"<<Tnorm;
+                file<<"   ErrorVisual_R:" <<Rnorm;
+                file<<"   ErrorDirecto_T:" <<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).errorT;
+                file<<"   ErrorDirecto_R: "<<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).errorR;
+                file<<"   END: "    <<currentTarget.getRunTime();
+                file<<"   WHY?: "<<inversekinematics_proxy->getTargetState(currentTarget.getBodyPart(), correctedTarget.getID_IK()).state;
+//                 if(timeSinMarca > (60/4))
+//                         file<<"   CAMARA PERDIDA: "<<1<<" - "<<timeSinMarca<<endl;
+//                 else
+//                         file<<"   CAMARA PERDIDA: "<<0<<" - "<<timeSinMarca<<endl;
+                flush(file);	                
+
                 //---------
 		return true;
 	}
