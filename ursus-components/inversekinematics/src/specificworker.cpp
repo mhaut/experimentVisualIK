@@ -568,6 +568,7 @@ void SpecificWorker::removeInnerModelTarget(Target& target)
  */
 void SpecificWorker::showInformation(BodyPart part, Target target)
 {
+        static int counter = 0;
 	qDebug()<<"-------------------> TARGET INFORMATION:";
 	qDebug()<<"Part name:      " <<part.getPartName();
 	qDebug()<<"Target ID:      " <<target.getTargetIdentifier();
@@ -591,11 +592,18 @@ void SpecificWorker::showInformation(BodyPart part, Target target)
 	qDebug()<<"Vector error:   "<<target.getTargetError(errorT, errorR)<<"\\";
 	qDebug()<<"(T: "<<abs(errorT)*1000<<"mm , R: "<<abs(errorR)<<"rad)";
 
-	file<<"P: ("      <<target.getTargetPose();
-	file<<")    ERROR_T:"<<abs(errorT)*1000;
-	file<<"     ERROR_R:" <<abs(errorR);
-	file<<"     END: "<<finalState.toStdString()<<endl;
-	flush(file);
+        if (counter == 2)
+        {
+            file<<"P: ("      <<target.getTargetPose();
+            file<<")    ERROR_T:"<<abs(errorT)*1000;
+            file<<"     ERROR_R:" <<abs(errorR);
+            file<<"     END: "<<finalState.toStdString()<<endl;
+            flush(file);
+            counter = 0;
+        }
+        else
+            counter++;
+        
 }
 /**
  * \brief This method stores the target solved into a structure
