@@ -401,7 +401,7 @@ void SpecificWorker::goHome(const string &bodyPart)
 
 	for (int i=0; i<7; i++)
 	{
-		listGoals[i].maxSpeed = MAX_SPEED;
+		listGoals[i].maxSpeed = 0.7;
 	}
 
 	jointmotor_proxy->setSyncPosition(listGoals);
