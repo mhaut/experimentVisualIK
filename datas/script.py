@@ -17,19 +17,19 @@ errorVisualT = np.array(errorVisualT)
 errorVisualR = np.array(errorVisualR)
 
 
-print errorVisualT
-print errorVisualR
+#print errorVisualT
+#print errorVisualR
 
-print np.average(errorVisualT)
-print np.average(errorVisualR)
+#print np.average(errorVisualT)
+#print np.average(errorVisualR)
 
 print np.amax(errorVisualT)
-print np.amax(errorVisualR)
+print np.amax(errorVisualR), np.amax(errorVisualR)/float(3.14/float(2))*100
 
-print np.amin(errorVisualT)
-print np.amin(errorVisualR)
+#print np.amin(errorVisualT)
+#print np.amin(errorVisualR)
 
-plt.plot(errorVisualT),plt.show()
-plt.plot(errorVisualR),plt.show()
+#plt.plot(errorVisualT),plt.show()
+#plt.plot(errorVisualR),plt.show()
 #deverrorVisualT  =
 #plt.errorbar(errorVisualT,deverrorVisualT),plt.show()
