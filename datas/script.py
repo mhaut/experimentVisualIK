@@ -29,5 +29,7 @@ print np.amax(errorVisualR)
 print np.amin(errorVisualT)
 print np.amin(errorVisualR)
 
-deverrorVisualT  =
-plt.errorbar(errorVisualT,deverrorVisualT),plt.show()
+plt.plot(errorVisualT),plt.show()
+plt.plot(errorVisualR),plt.show()
+#deverrorVisualT  =
+#plt.errorbar(errorVisualT,deverrorVisualT),plt.show()
