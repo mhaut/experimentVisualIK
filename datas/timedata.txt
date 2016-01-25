@@ -13,6 +13,7 @@ Tiempo:  55, Tnorm:  46.5642, Rnorm:  0.0182814
 Tiempo:  60, Tnorm:  41.3461, Rnorm:  0.0308573 
 Tiempo:  65, Tnorm:  40.5218, Rnorm:  0.0308743 
 
+
 target = QVector(250, 850, 410, 0, -0.78, 0) 
 Tiempo:  10, Tnorm:  48.2864, Rnorm:  0.2243 
 Tiempo:  15, Tnorm:  23.3723, Rnorm:  0.0487581 
@@ -42,61 +43,62 @@ Tiempo:  59 , Tnorm:  37.3627 , Rnorm:  0.123083
 Tiempo:  65 , Tnorm:  37.7632 , Rnorm:  0.126142 
 
 
-target = QVector(340, 1000, 400, 0, 0, 0.78)
-Tiempo:  7 , Tnorm:  114.339 , Rnorm:  0.497768 
-Tiempo:  15 , Tnorm:  93.9809 , Rnorm:  1.04181 
-Tiempo:  21 , Tnorm:  68.4728 , Rnorm:  0.359571 
-Tiempo:  26 , Tnorm:  20.11 , Rnorm:  0.282703 
-Tiempo:  31 , Tnorm:  40.4452 , Rnorm:  0.0963296 
-Tiempo:  36 , Tnorm:  32.3992 , Rnorm:  0.0646883 
-Tiempo:  41 , Tnorm:  49.085 , Rnorm:  0.0187346 
-Tiempo:  46 , Tnorm:  43.2572 , Rnorm:  0.00699883 
-Tiempo:  51 , Tnorm:  46.7666 , Rnorm:  0.0241635 
-Tiempo:  55 , Tnorm:  45.1415 , Rnorm:  0.00795911 
-Tiempo:  60 , Tnorm:  41.0338 , Rnorm:  0.00898341 
-Tiempo:  65 , Tnorm:  41.0111 , Rnorm:  0.0180801 
+target = QVector(340, 1000, 400, 0, -0.78, 0)
+Tiempo:  7  , Tnorm:   83.8575  , Rnorm:  0.292433 
+Tiempo:  12  , Tnorm:   26.6522  , Rnorm:  0.0399331 
+Tiempo:  17  , Tnorm:   27.3765  , Rnorm:  0.0174027 
+Tiempo:  22  , Tnorm:   38.1066  , Rnorm:  0.0438425 
+Tiempo:  28  , Tnorm:   38.0825  , Rnorm:  0.0425922 
+Tiempo:  37  , Tnorm:   37.3824  , Rnorm:  0.0249995 
+Tiempo:  42  , Tnorm:   39.3313  , Rnorm:  0.0244404 
+Tiempo:  46  , Tnorm:   37.1087  , Rnorm:  0.0191481 
+Tiempo:  51  , Tnorm:   34.7371  , Rnorm:  0.0235023 
+Tiempo:  56  , Tnorm:   34.5469  , Rnorm:  0.0195234 
+Tiempo:  60  , Tnorm:   35.6925  , Rnorm:  0.0171609 
+Tiempo:  72  , Tnorm:   36.2373  , Rnorm:  0.0108622 
 
 
-target = QVector(200, 950, 400, 0, 0, 0.78) 
-Tiempo:  10 , Tnorm:  50.9187 , Rnorm:  0.39984 
-Tiempo:  15 , Tnorm:  84.2413 , Rnorm:  0.414398 
-Tiempo:  20 , Tnorm:  29.1789 , Rnorm:  0.0619905 
-Tiempo:  25 , Tnorm:  31.2578 , Rnorm:  0.104677 
-Tiempo:  31 , Tnorm:  41.9945 , Rnorm:  0.0206571 
-Tiempo:  36 , Tnorm:  43.5594 , Rnorm:  0.00982326 
-Tiempo:  40 , Tnorm:  45.4363 , Rnorm:  0.0131829 
-Tiempo:  45 , Tnorm:  44.8573 , Rnorm:  0.0151487 
-Tiempo:  50 , Tnorm:  46.2157 , Rnorm:  0.0112628 
-Tiempo:  55 , Tnorm:  46.2148 , Rnorm:  0.014901 
-Tiempo:  60 , Tnorm:  46.1702 , Rnorm:  0.0108342 
-Tiempo:  65 , Tnorm:  45.1623 , Rnorm:  0.0165947 
+target = QVector(200, 950, 400, 0, -0.78, 0)
+Tiempo:  6  , Tnorm:   17.7608  , Rnorm:  0.140918 
+Tiempo:  12  , Tnorm:   28.1756  , Rnorm:  0.10709 
+Tiempo:  17  , Tnorm:   34.4132  , Rnorm:  0.0402495 
+Tiempo:  22  , Tnorm:   40.3421  , Rnorm:  0.0335105 
+Tiempo:  27  , Tnorm:   44.3942  , Rnorm:  0.0391518 
+Tiempo:  32  , Tnorm:   43.9299  , Rnorm:  0.0297899 
+Tiempo:  36  , Tnorm:   44.5803  , Rnorm:  0.0206876 
+Tiempo:  41  , Tnorm:   44.3551  , Rnorm:  0.0165964 
+Tiempo:  46  , Tnorm:   42.9803  , Rnorm:  0.0202362 
+Tiempo:  50  , Tnorm:   45.55  , Rnorm:  0.0149123 
+Tiempo:  55  , Tnorm:   45.5226  , Rnorm:  0.0164385 
+Tiempo:  60  , Tnorm:   43.8212  , Rnorm:  0.0132854 
+Tiempo:  64  , Tnorm:   44.1359  , Rnorm:  0.0228486 
 
 
-target = QVector(250, 925, 350, 0, 0, 0) 
-Tiempo:  10 , Tnorm:  53.4968 , Rnorm:  0.119062 
-Tiempo:  15 , Tnorm:  22.5187 , Rnorm:  0.285378 
-Tiempo:  21 , Tnorm:  54.8046 , Rnorm:  0.0289212 
-Tiempo:  26 , Tnorm:  59.8319 , Rnorm:  0.0854492 
-Tiempo:  31 , Tnorm:  63.6381 , Rnorm:  0.0243693 
-Tiempo:  36 , Tnorm:  63.2569 , Rnorm:  0.0137891 
-Tiempo:  40 , Tnorm:  63.3589 , Rnorm:  0.027232 
-Tiempo:  45 , Tnorm:  65.2295 , Rnorm:  0.00716454 
-Tiempo:  50 , Tnorm:  63.484 , Rnorm:  0.0199636 
-Tiempo:  54 , Tnorm:  65.884 , Rnorm:  0.0106859 
-Tiempo:  59 , Tnorm:  63.9245 , Rnorm:  0.0255946 
-Tiempo:  64 , Tnorm:  63.6589 , Rnorm:  0.0178143 
+target = QVector(250, 925, 350, 0, -0.78, 0) 
+Tiempo:  6  , Tnorm:   42.9884  , Rnorm:  0.138656 
+Tiempo:  12  , Tnorm:   23.1458  , Rnorm:  0.113538 
+Tiempo:  17  , Tnorm:   31.5888  , Rnorm:  0.0197193 
+Tiempo:  22  , Tnorm:   37.4012  , Rnorm:  0.0437666 
+Tiempo:  26  , Tnorm:   46.9559  , Rnorm:  0.0487677 
+Tiempo:  32  , Tnorm:   39.5191  , Rnorm:  0.029412 
+Tiempo:  36  , Tnorm:   38.7602  , Rnorm:  0.0297167 
+Tiempo:  41  , Tnorm:   39.8108  , Rnorm:  0.017134 
+Tiempo:  46  , Tnorm:   37.1058  , Rnorm:  0.0259366 
+Tiempo:  50  , Tnorm:   39.4458  , Rnorm:  0.0218406 
+Tiempo:  55  , Tnorm:   38.7138  , Rnorm:  0.0178602 
+Tiempo:  60  , Tnorm:   37.3431  , Rnorm:  0.016745 
+Tiempo:  64  , Tnorm:   37.9986  , Rnorm:  0.0117726
 
 
-target = QVector(550, 1000, 150, 0, 0, 0) 
-Tiempo:  11 , Tnorm:  44.538 , Rnorm:  0.0526863 
-Tiempo:  22 , Tnorm:  323.946 , Rnorm:  0.790934 
-Tiempo:  33 , Tnorm:  88.842 , Rnorm:  0.234304 
-Tiempo:  40 , Tnorm:  21.3226 , Rnorm:  0.0789955 
-Tiempo:  47 , Tnorm:  15.7938 , Rnorm:  0.0408206 
-Tiempo:  53 , Tnorm:  15.3254 , Rnorm:  0.0391299 
-Tiempo:  59 , Tnorm:  15.4996 , Rnorm:  0.0389459 
-Tiempo:  64 , Tnorm:  14.9218 , Rnorm:  0.0397117 
-
+target = QVector(550, 1000, 150, 0, -0.78, 0) 
+Tiempo:  6  , Tnorm:   187.164  , Rnorm:  0.286476 
+Tiempo:  15  , Tnorm:   179.144  , Rnorm:  0.281235 
+Tiempo:  23  , Tnorm:   179.527  , Rnorm:  0.279914 
+Tiempo:  31  , Tnorm:   179.621  , Rnorm:  0.277834 
+Tiempo:  40  , Tnorm:   179.115  , Rnorm:  0.285342 
+Tiempo:  48  , Tnorm:   179.654  , Rnorm:  0.284417 
+Tiempo:  56  , Tnorm:   179.593  , Rnorm:  0.283338 
+Tiempo:  65  , Tnorm:   179.694  , Rnorm:  0.283509 
 
 
 target = QVector(390, 950, 220, 0, -0.78, 0) 
@@ -128,3 +130,16 @@ Tiempo:  57 , Tnorm:  95.9178 , Rnorm:  0.535232
 Tiempo:  61 , Tnorm:  96.013 , Rnorm:  0.534666
 
 target =  QVector(200, 950, 400, 0, -0.78, 0)
+Tiempo:  6  , Tnorm:   53.3907  , Rnorm:  0.184056 
+Tiempo:  12  , Tnorm:   36.5242  , Rnorm:  0.12047 
+Tiempo:  17  , Tnorm:   53.6603  , Rnorm:  0.0575556 
+Tiempo:  22  , Tnorm:   58.4226  , Rnorm:  0.0902985 
+Tiempo:  27  , Tnorm:   61.827  , Rnorm:  0.0498824 
+Tiempo:  32  , Tnorm:   59.2742  , Rnorm:  0.0188238 
+Tiempo:  37  , Tnorm:   64.1279  , Rnorm:  0.0462531 
+Tiempo:  41  , Tnorm:   64.3821  , Rnorm:  0.0212384 
+Tiempo:  46  , Tnorm:   61.7101  , Rnorm:  0.0111592 
+Tiempo:  51  , Tnorm:   61.9708  , Rnorm:  0.0262398 
+Tiempo:  55  , Tnorm:   63.5489  , Rnorm:  0.015515 
+Tiempo:  60  , Tnorm:   60.9282  , Rnorm:  0.0163539 
+Tiempo:  65  , Tnorm:   64.2427  , Rnorm:  0.0271519 
