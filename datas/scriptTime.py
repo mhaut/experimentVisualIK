@@ -52,21 +52,47 @@ for i in range(len(allerrorVisual)):
 allOrdertimeStamp, allOrderErrorVisual = zip(*sorted(zip(allOrdertimeStamp,allOrderErrorVisual)))
 
 
-new_x = np.linspace(min(allOrdertimeStamp), max(allOrdertimeStamp), len(allOrdertimeStamp))
-new_y = sp.interpolate.interp1d(allOrdertimeStamp, allOrderErrorVisual, kind='cubic')(new_x)
+#new_x = np.linspace(min(allOrdertimeStamp), max(allOrdertimeStamp), len(allOrdertimeStamp))
+#new_y = sp.interpolate.interp1d(allOrdertimeStamp, allOrderErrorVisual, kind='cubic')(new_x)
 
 
+# mediante dos vectores x e y que almacenan, respectivamente, las coordenadas x e y de dichos datos, puede realizarse un ajuste polinómico
+# de grado n (n=1 para una recta, ...) de los mismos sin más que invocar la función polyfit de la siguiente manera:
+# El full solo para que devuelva todo lo demás que no es fp1, fp1 son los parámetros de la función modelo ajustado
+fp, residuals, rank, sv, rcond = sp.polyfit(allOrdertimeStamp, allOrderErrorVisual, 1, full=True)
+# contruimos la funcion
+f = sp.poly1d(fp)
+fx = sp.linspace(0,300, 1)
 
-f = interp1d(allOrdertimeStamp, allOrderErrorVisual)
-#f2 = interp1d(allOrdertimeStamp, allOrderErrorVisual, kind='cubic')
+plt.plot(fx, f(fx), linewidth=4)
 
-plt.plot(allOrdertimeStamp,allOrderErrorVisual , 'o', allOrdertimeStamp, f(allOrdertimeStamp))#, '-', allOrdertimeStamp, f2(allOrdertimeStamp), '--')
-plt.legend(['data', 'linear'], loc='best')#, 'cubic'], loc='best')
+#f = interp1d(allOrdertimeStamp, allOrderErrorVisual)
+##f2 = interp1d(allOrdertimeStamp, allOrderErrorVisual, kind='cubic')
+#plt.plot(allOrdertimeStamp,allOrderErrorVisual , 'o', allOrdertimeStamp, f(allOrdertimeStamp))#, '-', allOrdertimeStamp, f2(allOrdertimeStamp), '--')
+#plt.legend(['experimento', 'regresion'], loc='best')#, 'cubic'], loc='best')
+#plt.xlabel("Experimento")
+#plt.ylabel("Error (milimetros)")
+#plt.show()
+
+
+#x = np.linspace(1, 72, num=71, endpoint=True)
+
+allOrderErrorVisual = allOrderErrorVisual / np.max(allOrderErrorVisual)
+#f = interp1d(allOrdertimeStamp, allOrderErrorVisual)
+#plt.plot(allOrdertimeStamp,allOrderErrorVisual , 'o', allOrdertimeStamp, f(allOrdertimeStamp), x, f(x))#, '-', allOrdertimeStamp, f2(allOrdertimeStamp), '--')
+#plt.plot(x, f(x))#, '-', allOrdertimeStamp, f2(allOrdertimeStamp), '--')
+plt.legend(['experimento', 'regresion','otro'], loc='best')#, 'cubic'], loc='best')
+plt.xlabel("Experimento")
+plt.ylabel("Error (milimetros)")
 plt.show()
+
+
+
 
 timeStamp = np.array(allOrdertimeStamp)
 errorVisual = np.array(allOrderErrorVisual)
 maxallOrderErrorVisual = np.amax(allOrderErrorVisual)
+print "---------->", maxallOrderErrorVisual
 newlist = list()
 for i in range(len(allOrderErrorVisual)): 
     newlist.append(allOrderErrorVisual[i] / float(maxallOrderErrorVisual))
@@ -86,13 +112,13 @@ plt.show()
 for i in range(len(alltimeStamp)):
     timeStamp = alltimeStamp[i]
     errorVisual = allerrorVisual[i]
-    print errorVisual
+    #print errorVisual
     timeStamp = np.array(timeStamp)
     errorVisual = np.array(errorVisual)
     maxerrorVisual = np.amax(errorVisual)
     for i in range(len(errorVisual)):
         errorVisual[i] = errorVisual[i] / float(maxerrorVisual)
-    print errorVisual
+    #print errorVisual
     #plt.xlim((0,52))
     plt.ylim((0,1))
     plt.plot(timeStamp,errorVisual)
